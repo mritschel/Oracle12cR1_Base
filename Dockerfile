@@ -126,9 +126,10 @@ RUN $ORACLE_BASE/oraInventory/orainstRoot.sh && \
     $ORACLE_HOME/root.sh && \
     rm -rf $INSTALL_HOME
 
-# Set password for root
+# Set password for root and oracle 
 # -------------------------------------------------------------
 RUN echo 'geheim' | passwd --stdin root
+RUN echo 'geheim' | passwd --stdin oracle
 
 
 # Set the starting environment
@@ -141,7 +142,8 @@ EXPOSE 5500
 EXPOSE 8080
 
 # Startup script to start the database in container
+RUN chmod u+x $SCRIPTS_HOME/entrypoint.sh
 #ENTRYPOINT ["/u01/app/oracle/scripts/entrypoint.sh"]
 
 # Define default command.
-CMD ["bash"]
+#CMD ["bash"]

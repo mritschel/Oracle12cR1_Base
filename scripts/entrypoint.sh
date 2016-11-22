@@ -5,7 +5,7 @@
 #  Created: 28.09.2016 
 #  Base-information 
 #  ------------------------
-# Start-Script for the Trivadis TVD-ConfMan docker images
+# Start-Script for the Oracle Base docker images
 #  
 ##########################################################################
 set -e
@@ -23,11 +23,8 @@ else
 fi
 
 echo "\n \n \n"
-echo_yellow  "Starting listener and database"
-echo_yellow "---------------------------------------------------------------------------"
-#su oracle -c '/scripts/startup.sh database'
-echo_yellow "Database and Web management console initialized. Please visit"
-echo_yellow "   - http://localhost:8080/em"
-echo_yellow "   - http://localhost:8080/apex"
-echo_yellow "\n"
-echo_yellow "---------------------------------------------------------------------------"
+echo_green  "The server is started and ready"
+echo_green "---------------------------------------------------------------------------"
+echo_green "Oracle Server 12c R1 is under $ORACLE_HOME installed"
+echo_green "\n"
+echo_green "---------------------------------------------------------------------------"

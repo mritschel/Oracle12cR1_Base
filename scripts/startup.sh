@@ -51,7 +51,7 @@ chown -R oracle:dba ${ORACLE_HOME}/network/admin/tnsnames.ora
 
 alert_log="$ORACLE_BASE/diag/rdbms/$ORACLE_SID/$ORACLE_SID/trace/alert_$ORACLE_SID.log"
 listener_log="$ORACLE_BASE/diag/tnslsnr/$HOSTNAME/listener/trace/listener.log"
-pfile=$ORACLE_HOME/dbs/init$ORACLE_SID.ora
+pfile=$ORACLE_HOME/dbs/spfile$ORACLE_SID.ora
 
 export PATH=${ORACLE_HOME}/bin:$PATH
 
