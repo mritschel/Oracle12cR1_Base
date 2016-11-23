@@ -103,6 +103,11 @@ Complete the following steps to backup the data volume:
 
 
 ## Issues
+Please file your bug reports, enhancement requests, questions and other support requests within [Github's issue tracker](https://help.github.com/articles/about-issues/): 
+
+* [Existing issues](https://github.com/mritschel/oraclebase/issues)
+* [submit new issue](https://github.com/mritschel/oraclebase/issues/new)
+
 
 ## License
 
