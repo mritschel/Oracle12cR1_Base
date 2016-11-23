@@ -74,11 +74,6 @@ COPY scripts/$CONFIG_RSP         $SCRIPTS_HOME/
 COPY scripts/$PWD_FILE           $SCRIPTS_HOME/
 COPY scripts/colorecho           $SCRIPTS_HOME/ 
 
-# Rights to the scripts and installation files 
-# -------------------------------------------------------------
-RUN chmod -R ug+rwx $INSTALL_HOME
-RUN chmod -R ug+rwx $SCRIPTS_HOME
-
 # Setup filesystem and oracle user
 # Adjust file permissions, go to /u01/oracle as user 'oracle' to proceed with Oracle installation
 # ------------------------------------------------------------
@@ -90,9 +85,17 @@ RUN mkdir -p /u01 && \
     groupadd -g 501 oinstall && \
     useradd -d /home/oracle -g dba -G oinstall,dba -m -s /bin/bash oracle && \
     echo oracle:oracle | chpasswd && \
-    yum -y install oracle-rdbms-server-12cR1-preinstall unzip wget tar openssl && \
+    yum -y install oracle-rdbms-server-12cR1-preinstall unzip wget tar openssl zip gcc ksh which && \
     yum clean all && \
     chown -R oracle:dba $ORACLE_BASE
+
+# Rights to the scripts and installation files 
+# -------------------------------------------------------------
+RUN chown -R oracle:oinstall $INSTALL_HOME
+RUN chown -R oracle:oinstall $INSTALL_HOME
+RUN chmod -R ug+rwx $INSTALL_HOME
+RUN chmod -R ug+rwx $SCRIPTS_HOME
+
 
 # Replace place holders
 # -------------------------------------------------------------
@@ -104,17 +107,17 @@ RUN sed -i -e "s|###ORACLE_EDITION###|EE|g" $SCRIPTS_HOME/$INSTALL_RSP &&       
 # -------------------------------------------------------------
 USER oracle
 
-RUN cd $INSTALL_HOME       && \
-    unzip $INSTALL_FILE_1  >/dev/null 2>&1 && \
-    rm $INSTALL_FILE_1     >/dev/null 2>&1 && \
-    unzip $INSTALL_FILE_2  >/dev/null 2>&1 && \
-    rm $INSTALL_FILE_2     >/dev/null 2>&1 && \
+RUN cd $INSTALL_HOME        && \
+    unzip $INSTALL_FILE_1   && \
+    rm $INSTALL_FILE_1      && \
+    unzip $INSTALL_FILE_2   && \
+    rm $INSTALL_FILE_2      && \
     $INSTALL_HOME/database/runInstaller -silent -force -waitforcompletion -responsefile $SCRIPTS_HOME/$INSTALL_RSP -ignoresysprereqs -ignoreprereq  && \
-    rm -rf $INSTALL_HOME/database             && \
+    rm -rf $INSTALL_HOME/database                && \
     ln -s $SCRIPTS_HOME/$PWD_FILE $HOME/         && \
     echo "DEDICATED_THROUGH_BROKER_LISTENER=ON"  >> $ORACLE_HOME/network/admin/listener.ora  && \
     echo "DIAG_ADR_ENABLED = off"  >> $ORACLE_HOME/network/admin/listener.ora;
-
+    
 # Check whether Perl is working
 # -------------------------------------------------------------
 RUN chmod u+x $SCRIPTS_HOME/installPerl.sh && \
@@ -143,7 +146,7 @@ EXPOSE 8080
 
 # Startup script to start the database in container
 RUN chmod u+x $SCRIPTS_HOME/entrypoint.sh
-#ENTRYPOINT ["/u01/app/oracle/scripts/entrypoint.sh"]
+ENTRYPOINT ["/u01/app/oracle/scripts/entrypoint.sh"]
 
 # Define default command.
 #CMD ["bash"]
