@@ -85,7 +85,7 @@ RUN mkdir -p /u01 && \
     groupadd -g 501 oinstall && \
     useradd -d /home/oracle -g dba -G oinstall,dba -m -s /bin/bash oracle && \
     echo oracle:oracle | chpasswd && \
-    yum -y install oracle-rdbms-server-12cR1-preinstall unzip wget tar openssl zip gcc ksh which && \
+    yum -y install oracle-rdbms-server-12cR1-preinstall unzip wget tar openssl zip gcc ksh which sudo && \
     yum clean all && \
     chown -R oracle:dba $ORACLE_BASE
 
