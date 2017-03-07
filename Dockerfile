@@ -21,7 +21,8 @@
 # ---------------
 ##########################################################################
 
-FROM oraclelinux:latest
+#FROM oraclelinux:latest
+FROM oraclelinux:7-slim
 
 # Maintainer
 # ----------
@@ -81,10 +82,10 @@ RUN mkdir -p /u01 && \
     mkdir -p $ORACLE_DATA && \
     chmod ug+x $SCRIPTS_HOME/$PWD_FILE && \
     chmod ug+x $SCRIPTS_HOME/$RUN_FILE && \
-    groupadd -g 500 dba && \
-    groupadd -g 501 oinstall && \
-    useradd -d /home/oracle -g dba -G oinstall,dba -m -s /bin/bash oracle && \
-    echo oracle:oracle | chpasswd && \
+    #groupadd -g 500 dba && \
+    #groupadd -g 501 oinstall && \
+    #useradd -d /home/oracle -g dba -G oinstall,dba -m -s /bin/bash oracle && \
+    #echo oracle:oracle | chpasswd && \
     yum -y install oracle-rdbms-server-12cR1-preinstall unzip wget tar openssl zip gcc ksh which sudo && \
     yum clean all && \
     chown -R oracle:dba $ORACLE_BASE
@@ -137,8 +138,8 @@ RUN echo 'geheim' | passwd --stdin oracle
 
 # Set the starting environment
 # -------------------------------------------------------------
-USER oracle
-WORKDIR /home/oracle
+USER root
+#WORKDIR /home/oracle
 
 EXPOSE 1521 
 EXPOSE 5500
