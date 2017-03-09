@@ -171,6 +171,12 @@ echo_green "###################################"
 echo_green " Database is started and ready!"
 echo_green "###################################"
 
+# Check if the script entrypoint.sh is present 
+if [ -f $SCRIPT_DIR/$ENTRY_FILE ]
+  then
+    $SCRIPT_DIR/$ENTRY_FILE
+fi
+
 tail -f $ORACLE_BASE/diag/rdbms/*/*/trace/alert*.log &
 childPID=$!
 wait $childPID

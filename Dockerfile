@@ -56,7 +56,8 @@ ENV DB_FILE_1="linuxamd64_12102_database_se2_1of2.zip" \
     ORACLE_CDB="true" \
     INSTALL_DB_BINARIES_FILE="install_oracle.sh" \    
     FORMAT_ECHO="colorecho" \
-    PRE_INSTALL="pre_install.sh"
+    PRE_INSTALL="pre_install.sh" \
+    ENTRY_FILE="entrypoint.sh"
 
 # Use second ENV so that variable get substituted
 # -------------------------------------------------------------

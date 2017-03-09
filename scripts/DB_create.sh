@@ -1,3 +1,4 @@
+#!/bin/bash
 ##########################################################################
 # LICENSE CDDL 1.0 + GPL 2.0
 #
@@ -94,5 +95,6 @@ else
       ALTER SYSTEM SET control_files='$ORACLE_BASE/oradata/$ORACLE_SID/control01.ctl' scope=spfile;
    EOF
 fi;
+
 # Remove temporary response file
 rm $SCRIPT_DIR/$DBCA_RSP
