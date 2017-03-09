@@ -14,7 +14,7 @@
 ##########################################################################
 set -e
 
-source $ORACLE_BASE/colorecho
+source $SCRIPT_DIR/colorecho
 
 
 ORACLE_SID=$1
@@ -43,12 +43,12 @@ echo_green "Automatic generated password fOr the user "SYS", "SYSTEM" AND "PDBAM
 echo_green "###############################################################################################";
 
 # Modify the response file for the database gerneration
-cp $ORACLE_BASE/$DBCA_RSP $ORACLE_BASE/dbca.rsp
-sed -i -e "s|###ORACLE_SID###|$ORACLE_SID|g" $ORACLE_BASE/dbca.rsp
-sed -i -e "s|###ORACLE_PDB###|$ORACLE_PDB|g" $ORACLE_BASE/dbca.rsp
-sed -i -e "s|###ORACLE_PWD###|$ORACLE_PWD|g" $ORACLE_BASE/dbca.rsp
-sed -i -e "s|###CONTAINER_DB###|$ORACLE_CDB|g" $ORACLE_BASE/dbca.rsp
-sed -i -e "s|###ORACLE_CHARACTERSET###|$ORACLE_CHARACTERSET|g" $ORACLE_BASE/dbca.rsp
+cp $SCRIPT_DIR/$DBCA_RSP $SCRIPT_DIR/dbca.rsp
+sed -i -e "s|###ORACLE_SID###|$ORACLE_SID|g" $SCRIPT_DIR/dbca.rsp
+sed -i -e "s|###ORACLE_PDB###|$ORACLE_PDB|g" $SCRIPT_DIR/dbca.rsp
+sed -i -e "s|###ORACLE_PWD###|$ORACLE_PWD|g" $SCRIPT_DIR/dbca.rsp
+sed -i -e "s|###CONTAINER_DB###|$ORACLE_CDB|g" $SCRIPT_DIR/dbca.rsp
+sed -i -e "s|###ORACLE_CHARACTERSET###|$ORACLE_CHARACTERSET|g" $SCRIPT_DIR/dbca.rsp
 
 # Create config files for sqlnet.ora, tnsnames.ora, listener.ora
 mkdir -p $ORACLE_HOME/network/admin
@@ -67,7 +67,7 @@ echo "LISTENER =
 
 # Start LISTENER and run DBCA
 lsnrctl start &&
-dbca -silent -responseFile $ORACLE_BASE/dbca.rsp ||
+dbca -silent -responseFile $SCRIPT_DIR/dbca.rsp ||
  cat /u01/oracle/cfgtoollogs/dbca/$ORACLE_SID/$ORACLE_SID.log ||
  cat /u01/oracle/cfgtoollogs/dbca/$ORACLE_SID.log
 
@@ -95,4 +95,4 @@ else
    EOF
 fi;
 # Remove temporary response file
-rm $ORACLE_BASE/$DBCA_RSP
+rm $SCRIPT_DIR/$DBCA_RSP

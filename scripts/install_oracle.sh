@@ -15,7 +15,7 @@
 ##########################################################################
 
 
-source $ORACLE_BASE/colorecho
+source $SCRIPT_DIR/colorecho
 
 EDITION=$1
 
@@ -60,7 +60,7 @@ unzip $DB_FILE_2 && \
 rm $DB_FILE_2    && \
 $INSTALL_DIR/database/runInstaller -silent -force -waitforcompletion -responsefile $INSTALL_DIR/$DB_RSP -ignoresysprereqs -ignoreprereq && \
 rm -rf $INSTALL_DIR/database && \
-ln -s $ORACLE_BASE/$PWD_FILE $HOME/ && \
+ln -s $SCRIPT_DIR/$PWD_FILE $HOME/ && \
 echo "DEDICATED_THROUGH_BROKER_LISTENER=ON"  >> $ORACLE_HOME/network/admin/listener.ora && \
 echo "DIAG_ADR_ENABLED = off"  >> $ORACLE_HOME/network/admin/listener.ora;
 

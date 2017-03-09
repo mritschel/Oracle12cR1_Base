@@ -14,7 +14,7 @@
 #
 ##########################################################################
 
-source $ORACLE_BASE/colorecho
+source $SCRIPT_DIR/colorecho
 
 # Check that ORACLE_HOME is set
 if [ "$ORACLE_HOME" == "" ]; then

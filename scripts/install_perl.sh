@@ -14,7 +14,7 @@
 ##########################################################################
 set -e
 
-source $ORACLE_BASE/colorecho
+source $SCRIPT_DIR/colorecho
 
 # Install latest Perl
 

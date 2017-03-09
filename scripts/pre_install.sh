@@ -15,7 +15,7 @@
 ##########################################################################
 set -e
 
-source $ORACLE_BASE/install/colorecho
+source $SCRIPT_DIR/colorecho
 
 # Check CSpace 
 REQUIRED_SPACE_GB=15
@@ -29,10 +29,10 @@ if [ `df -B 1G . | tail -n 1 | awk '{print $4'}` -lt $REQUIRED_SPACE_GB ]; then
 fi;
 
 mkdir -p $ORACLE_BASE/oradata && \
-chmod ug+x $ORACLE_BASE/$PWD_FILE && \
-chmod ug+x $ORACLE_BASE/$RUN_FILE && \
-chmod ug+x $ORACLE_BASE/$START_FILE && \
-chmod ug+x $ORACLE_BASE/$CREATE_DB_FILE && \
+chmod ug+x $SCRIPT_DIR/$PWD_FILE && \
+chmod ug+x $SCRIPT_DIR/$RUN_FILE && \
+chmod ug+x $SCRIPT_DIR/$START_FILE && \
+chmod ug+x $SCRIPT_DIR/$CREATE_DB_FILE && \
 groupadd -g 500 dba && \
 groupadd -g 501 oinstall && \
 useradd  -u 500 -d /home/oracle -g dba -G dba,oinstall -m -s /bin/bash oracle && \

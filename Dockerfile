@@ -61,6 +61,7 @@ ENV DB_FILE_1="linuxamd64_12102_database_se2_1of2.zip" \
 # Use second ENV so that variable get substituted
 # -------------------------------------------------------------
 ENV INSTALL_DIR=$ORACLE_BASE/install \
+    SCRIPT_DIR=$ORACLE_BASE/scripts \
     PATH=$ORACLE_HOME/bin:$ORACLE_HOME/OPatch/:/usr/sbin:$PATH \
     LD_LIBRARY_PATH=$ORACLE_HOME/lib:/usr/lib \
     CLASSPATH=$ORACLE_HOME/jlib:$ORACLE_HOME/rdbms/jlib
@@ -77,7 +78,7 @@ COPY $SCRIPT_HOME/$FORMAT_ECHO $SCRIPT_HOME/$PRE_INSTALL $SCRIPT_HOME/$DB_RSP $S
 
 # Copy install scripts to Oracle Base 
 # -----------------------------------
-COPY $SCRIPT_HOME/$FORMAT_ECHO $SCRIPT_HOME/$RUN_FILE $SCRIPT_HOME/$START_FILE $SCRIPT_HOME/$CREATE_DB_FILE $SCRIPT_HOME/$CONFIG_RSP $SCRIPT_HOME/$PWD_FILE $ORACLE_BASE/
+COPY $SCRIPT_HOME/$FORMAT_ECHO $SCRIPT_HOME/$RUN_FILE $SCRIPT_HOME/$START_FILE $SCRIPT_HOME/$CREATE_DB_FILE $SCRIPT_HOME/$CONFIG_RSP $SCRIPT_HOME/$PWD_FILE $SCRIPT_DIR/
 
 
 RUN chmod ug+x $INSTALL_DIR/*.sh && \
@@ -102,4 +103,4 @@ EXPOSE 5500
 EXPOSE 8080
     
 # Define default command to start Oracle Database. 
-CMD $ORACLE_BASE/$RUN_FILE
+CMD $SCRIPT_DIR/$RUN_FILE

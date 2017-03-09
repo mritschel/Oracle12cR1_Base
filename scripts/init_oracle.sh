@@ -14,7 +14,7 @@
 #
 ##########################################################################
 
-source $ORACLE_BASE/colorecho
+source $SCRIPT_DIR/colorecho
 
 ########### Move DB files ############
 function moveFiles {
@@ -152,7 +152,7 @@ if [ -d $ORACLE_BASE/oradata/$ORACLE_SID ]; then
    fi;
    
    # Start database
-   $ORACLE_BASE/$START_FILE;
+   $SCRIPT_DIR/$START_FILE;
    
 else
    # Remove database config files, if they exist
@@ -161,7 +161,7 @@ else
    rm -f $ORACLE_HOME/network/admin/tnsnames.ora
    
    # Create database
-   $ORACLE_BASE/$CREATE_DB_FILE $ORACLE_SID $ORACLE_PDB $ORACLE_CDB;
+   $SCRIPT_DIR/$CREATE_DB_FILE $ORACLE_SID $ORACLE_PDB $ORACLE_CDB;
    
    # Move database operational files to oradata
    moveFiles;
