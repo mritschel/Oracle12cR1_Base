@@ -105,7 +105,7 @@ SID = "###ORACLE_SID###"
 # Default value : false
 # Mandatory     : No
 #-----------------------------------------------------------------------------
-CREATEASCONTAINERDATABASE = "true"
+CREATEASCONTAINERDATABASE = ""###CONTAINER_DB###""
 
 #-----------------------------------------------------------------------------
 # Name          : NUMBEROFPDBS
@@ -227,7 +227,7 @@ DBSNMPPASSWORD = "###ORACLE_PWD###"
 # Default value : "US7ASCII"
 # Mandatory     : NO
 #-----------------------------------------------------------------------------
-CHARACTERSET = "AL32UTF8"
+CHARACTERSET = "###ORACLE_CHARACTERSET###"
 
 #-----------------------------------------------------------------------------
 # Name          : NATIONALCHARACTERSET
@@ -246,7 +246,7 @@ NATIONALCHARACTERSET= "UTF8"
 # Default value : None
 # Mandatory     : NO
 #-----------------------------------------------------------------------------
-INITPARAMS = db_recovery_file_dest=/opt/oracle/oradata/fast_recovery_area,audit_trail=none,audit_sys_operations=false
+INITPARAMS = db_recovery_file_dest=/u01/oracle/oradata/fast_recovery_area,audit_trail=none,audit_sys_operations=false
 
 #-----------------------------------------------------------------------------
 # Name          : AUTOMATICMEMORYMANAGEMENT

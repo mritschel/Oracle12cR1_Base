@@ -83,7 +83,7 @@ INVENTORY_LOCATION=###ORACLE_BASE###/oraInventory
 # Specify value as the following to select all the languages.
 # Example : SELECTED_LANGUAGES=all_langs  
 #-------------------------------------------------------------------------------
-SELECTED_LANGUAGES=en
+SELECTED_LANGUAGES=en,de
 
 #-------------------------------------------------------------------------------
 # Specify the complete path of the Oracle Home. 
