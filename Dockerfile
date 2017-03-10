@@ -29,7 +29,7 @@ FROM oraclelinux:7-slim
 # ----------
 MAINTAINER Martin RItschel <martin.ritschel@trivadis.com.com>
 
-LABEL Oracle12cR1_Base
+LABEL  Basic oracle 12c R1  
 
 # Environment variables for the install files ans scripts (do NOT change)
 # -------------------------------------------------------------
