@@ -7,7 +7,7 @@
 * Oracle Database 12.1.0.2 Standard Edition 
 * Perl 5, version 14, subversion 1 (v5.14.1) 
 	
-Pull the latest trusted build from [here](https://hub.docker.com/r/mritschel/oraclebase).
+Pull the latest trusted build from [here](https://hub.docker.com/r/mritschel/oracle12cr1_base).
 
 
 ## Installation
@@ -18,11 +18,11 @@ Complete the following steps to create a new container:
 
 1. Pull the image
 
-		docker pull mritschel/oraclebase
+		docker pull mritschel/oracle12cr1_base
 
 2. Create the container
 
-		docker run -d -p 8080:8080 -p 5500:5500 -p 1521:1521 -v [<host mount point>:]/u01/oracle/oradata  --name oracle-base mritschel/oraclebase 
+		docker run -d -p 8080:8080 -p 5500:5500 -p 1521:1521 -v [<host mount point>:]/u01/oracle/oradata  --name oracle-base mritschel/oracle12cr1_base 
 		
 3. wait around **5 minutes** until the image is downloaded. Check logs with ```docker logs oracle base```. The container stops if an error occurred. 
    Check the logs to determine how to proceed.
@@ -96,7 +96,7 @@ Complete the following steps to backup the data volume:
 
 Please file your bug reports, enhancement requests, questions and other support requests within [Github's issue tracker](https://help.github.com/articles/about-issues/): 
 
-* [Existing issues](https://github.com/mritschel/oraclebase/issues)
+* [Existing issues](https://github.com/mritschel/oracle12cr1_base/issues)
 
 ## License
 
