@@ -19,7 +19,7 @@
 # 
 # Put the downloaded files in the software directory 
 # Run: 
-#      $ docker build -t mritschel/oraclebase:latest . 
+#      $ docker build -t mritschel/oracle12cr1_base:latest . 
 #
 ##########################################################################
 
